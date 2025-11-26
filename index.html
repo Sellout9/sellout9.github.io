@@ -19,17 +19,30 @@
       font-weight: 500;
     }
     header {
-      padding: 20px 24px;
+      padding: 24px 24px;
       text-align: center;
       background: #0a0a0a;
       border-bottom: 1px solid #1a1a1a;
+      position: relative;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: #00ff88;
+      opacity: 0.4;
     }
     h1 {
       margin: 0;
-      font-size: 22px;
-      letter-spacing: 0.05em;
-      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: 0.08em;
+      font-weight: 700;
       color: #ffffff;
+      text-transform: uppercase;
     }
     main {
       flex: 1;
@@ -42,25 +55,42 @@
       background: #0f0f0f;
       border: 1px solid #1f1f1f;
       border-radius: 0;
-      padding: 32px;
+      padding: 40px 36px;
       width: 100%;
-      max-width: 480px;
-      box-shadow: 0 0 0 1px #1a1a1a;
+      max-width: 520px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px #1a1a1a;
       text-align: center;
+      position: relative;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00ff88, transparent);
+      opacity: 0.3;
     }
     .grass-block {
       display: block;
-      margin: 0 auto 24px;
-      width: 100px;
+      margin: 0 auto 28px;
+      width: 110px;
       height: auto;
       image-rendering: pixelated;
-      filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.3));
+      filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.4));
+      transition: transform 0.3s ease;
+    }
+    .grass-block:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 16px rgba(0, 255, 136, 0.6));
     }
     .main-price {
-      margin: 24px 0 32px;
-      padding: 20px 0;
+      margin: 28px 0 36px;
+      padding: 24px 0;
       border-top: 1px solid #1a1a1a;
       border-bottom: 1px solid #1a1a1a;
+      position: relative;
     }
     .main-price-label {
       color: #888888;
@@ -72,11 +102,12 @@
     }
     .main-price-value {
       color: #ffffff;
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 700;
       line-height: 1;
-      margin: 8px 0;
+      margin: 10px 0;
       letter-spacing: -0.02em;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
     .price-change {
       display: inline-flex;
@@ -142,11 +173,39 @@
       margin-bottom: 12px;
     }
     .ad-section {
-      padding: 12px 16px;
-      background: #0f0f0f;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 255, 136, 0.02) 100%);
       border: 1px solid #00ff88;
       margin-bottom: 12px;
       text-align: center;
+      transition: all 0.3s ease;
+    }
+    .ad-section:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 255, 136, 0.04) 100%);
+      border-color: #00ffaa;
+      box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+    }
+    .ad-section-prominent {
+      padding: 18px 24px;
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+      border: 2px solid #00ff88;
+      margin: 24px 0 32px 0;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
+    }
+    .ad-section-prominent:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.08) 100%);
+      border-color: #00ffaa;
+      box-shadow: 0 0 24px rgba(0, 255, 136, 0.3);
+      transform: translateY(-2px);
+    }
+    .ad-section-prominent .ad-section-text {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .ad-section-prominent .ad-section-command {
+      font-size: 20px;
     }
     .ad-section-text {
       color: #ffffff;
@@ -159,6 +218,162 @@
       font-size: 16px;
       font-weight: 700;
       font-family: monospace;
+    }
+    .chart-container {
+      margin-top: 32px;
+      padding: 24px 0;
+      border-top: 1px solid #1a1a1a;
+    }
+    .chart-title {
+      color: #888888;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .chart-wrapper {
+      position: relative;
+      height: 200px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    .chart-tooltip {
+      position: absolute;
+      background: #0a0a0a;
+      border: 1px solid #00ff88;
+      padding: 10px 14px;
+      border-radius: 0;
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease-out;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 255, 136, 0.3);
+      white-space: nowrap;
+      transform: translateX(-50%);
+    }
+    .chart-tooltip.visible {
+      opacity: 1;
+    }
+    .chart-tooltip-price {
+      color: #00ff88;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .chart-tooltip-label {
+      color: #888888;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .chart-dot {
+      fill: #00ff88;
+      r: 3;
+      animation: dotBlink 1.5s ease-in-out infinite;
+      cursor: pointer;
+      transition: r 0.2s;
+    }
+    .chart-dot:hover {
+      r: 5;
+      fill: #ffffff;
+    }
+    .chart-svg {
+      width: 100%;
+      height: 100%;
+    }
+    .chart-line {
+      fill: none;
+      stroke: #00ff88;
+      stroke-width: 2.5;
+      vector-effect: non-scaling-stroke;
+      animation: chartBlink 1.5s ease-in-out infinite;
+    }
+    .chart-area {
+      fill: url(#chartGradient);
+      animation: chartAreaBlink 1.5s ease-in-out infinite;
+    }
+    .chart-dot.current {
+      fill: #ffffff;
+      r: 4.5;
+      filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.8));
+      animation: currentDotBlink 0.8s ease-in-out infinite;
+    }
+    @keyframes chartBlink {
+      0%, 100% {
+        opacity: 1;
+        stroke-width: 2.5;
+      }
+      50% {
+        opacity: 0.6;
+        stroke-width: 3;
+      }
+    }
+    @keyframes chartAreaBlink {
+      0%, 100% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 0.4;
+      }
+    }
+    @keyframes dotBlink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    @keyframes currentDotBlink {
+      0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.8));
+      }
+      50% {
+        opacity: 0.6;
+        filter: drop-shadow(0 0 12px rgba(0, 255, 136, 1));
+      }
+    }
+    .all-time-high {
+      color: #00ff88;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(0, 255, 136, 0.05);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      display: inline-flex;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-value {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      color: #666666;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -176,44 +391,289 @@
         alt="Grass block"
       />
       <div class="main-price">
-        <div class="main-price-label">Current Buy Price</div>
-        <div class="main-price-value">975</div>
+        <div class="main-price-label">Current Sell Price</div>
+        <div class="main-price-value" id="currentPrice">835</div>
         <div class="price-change">
           <span class="arrow-up"></span>
-          <span>+5 from yesterday (970)</span>
+          <span id="priceChange">+5 from last price (830)</span>
         </div>
       </div>
-      <div class="row">
-        <div class="label">Sell Price</div>
-        <div class="value">
+      <div class="ad-section-prominent">
+        <div class="ad-section-text">Sell your grass at the best prices!</div>
+        <div class="ad-section-command">/visit Sellout9</div>
+      </div>
+      <div class="chart-container">
+        <div class="chart-title">Price History</div>
+        <div class="chart-wrapper">
+          <div class="chart-tooltip" id="chartTooltip">
+            <div class="chart-tooltip-price" id="tooltipPrice">835</div>
+            <div class="chart-tooltip-label" id="tooltipLabel">Current Price</div>
+          </div>
+          <svg class="chart-svg" id="priceChart" viewBox="0 0 400 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#00ff88;stop-opacity:0" />
+              </linearGradient>
+            </defs>
+            <path id="chartLine" class="chart-line" d=""></path>
+            <path id="chartArea" class="chart-area" d=""></path>
+            <g id="chartDots"></g>
+          </svg>
+        </div>
+        <div class="all-time-high">
           <span class="arrow-up"></span>
-          <span>835</span>
+          <span>All-Time High</span>
         </div>
       </div>
-      <div class="row">
-        <div class="label">Mid Price</div>
-        <div class="value mid">
-          <span class="arrow-up"></span>
-          <span>905</span>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="statLow">600</div>
+          <div class="stat-label">Low</div>
         </div>
-      </div>
-      <div class="row">
-        <div class="label">Buy Price</div>
-        <div class="value">
-          <span class="arrow-up"></span>
-          <span>975</span>
+        <div class="stat-item">
+          <div class="stat-value" id="statHigh">835</div>
+          <div class="stat-label">High</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statChange">+235</div>
+          <div class="stat-label">Total Gain</div>
         </div>
       </div>
     </div>
   </main>
 
   <footer>
-    <div class="ad-section">
-      <div class="ad-section-text">Sell your grass at the best prices!</div>
-      <div class="ad-section-command">/visit Sellout9</div>
-    </div>
     <div class="footer-text">Unofficial fan project. Not affiliated with skyblock.net staff.</div>
   </footer>
+
+  <script>
+    let priceHistory = [];
+    let priceData = {};
+    
+    // Fetch prices from JSON
+    async function loadPrices() {
+      try {
+        const response = await fetch('prices.json');
+        priceData = await response.json();
+        
+        // Use priceHistory from JSON, fallback to default if not present
+        priceHistory = priceData.priceHistory || [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835];
+        
+        // Update current price
+        document.getElementById('currentPrice').textContent = priceData.sell;
+        
+        // Calculate and display price change
+        const change = priceData.sell - priceData.previousSell;
+        document.getElementById('priceChange').textContent = 
+          `+${change} from last price (${priceData.previousSell})`;
+        
+        // Update stats
+        const minPrice = Math.min(...priceHistory);
+        const maxPrice = Math.max(...priceHistory);
+        const totalGain = maxPrice - minPrice;
+        document.getElementById('statLow').textContent = minPrice;
+        document.getElementById('statHigh').textContent = maxPrice;
+        document.getElementById('statChange').textContent = `+${totalGain}`;
+        
+        // Draw chart
+        drawChart();
+      } catch (error) {
+        console.error('Error loading prices:', error);
+        // Fallback to default values
+        priceHistory = [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835];
+        drawChart();
+      }
+    }
+    
+    function drawChart() {
+      const svg = document.getElementById('priceChart');
+      const chartLine = document.getElementById('chartLine');
+      const chartArea = document.getElementById('chartArea');
+      const chartDots = document.getElementById('chartDots');
+      const tooltip = document.getElementById('chartTooltip');
+      const tooltipPrice = document.getElementById('tooltipPrice');
+      const tooltipLabel = document.getElementById('tooltipLabel');
+      const chartWrapper = document.querySelector('.chart-wrapper');
+      
+      const width = 400;
+      const height = 200;
+      const padding = 20;
+      const chartWidth = width - (padding * 2);
+      const chartHeight = height - (padding * 2);
+      
+      const minPrice = Math.min(...priceHistory);
+      const maxPrice = Math.max(...priceHistory);
+      const priceRange = maxPrice - minPrice;
+      const pricePadding = priceRange * 0.1;
+      
+      // Generate path data
+      let linePath = '';
+      let areaPath = '';
+      const points = [];
+      
+      priceHistory.forEach((price, index) => {
+        const x = padding + (index / (priceHistory.length - 1)) * chartWidth;
+        const y = padding + chartHeight - ((price - minPrice + pricePadding) / (priceRange + pricePadding * 2)) * chartHeight;
+        
+        points.push({ x, y, price, index });
+        
+        if (index === 0) {
+          linePath = `M ${x} ${y}`;
+          areaPath = `M ${x} ${height - padding} L ${x} ${y}`;
+        } else {
+          linePath += ` L ${x} ${y}`;
+          areaPath += ` L ${x} ${y}`;
+        }
+      });
+      
+      // Close area path
+      areaPath += ` L ${padding + chartWidth} ${height - padding} Z`;
+      
+      chartLine.setAttribute('d', linePath);
+      chartArea.setAttribute('d', areaPath);
+      
+      // Make chart line hoverable
+      chartLine.style.cursor = 'crosshair';
+      chartArea.style.cursor = 'crosshair';
+      
+      // Add hover areas along the line for better interaction
+      const hoverAreas = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      hoverAreas.setAttribute('id', 'hoverAreas');
+      hoverAreas.style.pointerEvents = 'all';
+      
+      // Create invisible hover rectangles between points
+      for (let i = 0; i < points.length - 1; i++) {
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const midX = (p1.x + p2.x) / 2;
+        const midY = (p1.y + p2.y) / 2;
+        const distance = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+        
+        // Create a wider hover area
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', p1.x - 15);
+        rect.setAttribute('y', Math.min(p1.y, p2.y) - 15);
+        rect.setAttribute('width', distance + 30);
+        rect.setAttribute('height', Math.abs(p2.y - p1.y) + 30);
+        rect.setAttribute('fill', 'transparent');
+        rect.setAttribute('data-price', p1.price);
+        rect.setAttribute('data-index', i);
+        rect.style.cursor = 'pointer';
+        
+        rect.addEventListener('mouseenter', () => {
+          showTooltip(p1, i, chartWrapper, svg, width, height, tooltip, tooltipPrice, tooltipLabel, points.length);
+        });
+        
+        hoverAreas.appendChild(rect);
+      }
+      
+      svg.appendChild(hoverAreas);
+      
+      // Add mouse move tracking on the entire SVG
+      svg.addEventListener('mousemove', (e) => {
+        const rect = svg.getBoundingClientRect();
+        const scaleX = width / rect.width;
+        const scaleY = height / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+        
+        // Find closest point
+        let closestPoint = null;
+        let minDistance = Infinity;
+        
+        points.forEach((point, index) => {
+          const distance = Math.sqrt(Math.pow(x - point.x, 2) + Math.pow(y - point.y, 2));
+          if (distance < minDistance && distance < 20) {
+            minDistance = distance;
+            closestPoint = { point, index };
+          }
+        });
+        
+        if (closestPoint) {
+          showTooltip(closestPoint.point, closestPoint.index, chartWrapper, svg, width, height, tooltip, tooltipPrice, tooltipLabel, points.length);
+        }
+      });
+      
+      svg.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+      });
+      
+      // Helper function to show tooltip
+      function showTooltip(point, index, chartWrapper, svg, width, height, tooltip, tooltipPrice, tooltipLabel, totalPoints) {
+        const rect = chartWrapper.getBoundingClientRect();
+        const scaleX = rect.width / width;
+        const scaleY = rect.height / height;
+        
+        tooltipPrice.textContent = point.price;
+        tooltipLabel.textContent = index === totalPoints - 1 ? 'Current Price' : `Point ${index + 1}`;
+        
+        const tooltipX = point.x * scaleX;
+        const tooltipY = (point.y * scaleY) - tooltip.offsetHeight - 12;
+        
+        tooltip.style.left = `${tooltipX}px`;
+        tooltip.style.top = `${tooltipY}px`;
+        tooltip.classList.add('visible');
+        
+        // Prevent tooltip from going off screen
+        setTimeout(() => {
+          const tooltipRect = tooltip.getBoundingClientRect();
+          const wrapperRect = chartWrapper.getBoundingClientRect();
+          if (tooltipRect.left < wrapperRect.left) {
+            tooltip.style.left = `${tooltip.offsetWidth / 2}px`;
+          } else if (tooltipRect.right > wrapperRect.right) {
+            tooltip.style.left = `${wrapperRect.width - tooltip.offsetWidth / 2}px`;
+          }
+        }, 0);
+      }
+      
+      // Draw dots with hover functionality
+      chartDots.innerHTML = '';
+      let currentDot = null;
+      points.forEach((point, index) => {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('class', index === points.length - 1 ? 'chart-dot current' : 'chart-dot');
+        circle.setAttribute('cx', point.x);
+        circle.setAttribute('cy', point.y);
+        circle.setAttribute('data-price', point.price);
+        circle.setAttribute('data-index', index);
+        circle.style.cursor = 'pointer';
+        
+        // Hover events
+        circle.addEventListener('mouseenter', () => {
+          showTooltip(point, index, chartWrapper, svg, width, height, tooltip, tooltipPrice, tooltipLabel, points.length);
+        });
+        
+        circle.addEventListener('mouseleave', () => {
+          // Don't hide immediately, let the SVG mouseleave handle it
+        });
+        
+        chartDots.appendChild(circle);
+        if (index === points.length - 1) {
+          currentDot = circle;
+        }
+      });
+      
+      // Animate current dot radius for extra blinking effect
+      if (currentDot) {
+        let radius = 4.5;
+        let growing = true;
+        setInterval(() => {
+          if (growing) {
+            radius += 0.3;
+            if (radius >= 6) growing = false;
+          } else {
+            radius -= 0.3;
+            if (radius <= 4.5) growing = true;
+          }
+          currentDot.setAttribute('r', radius);
+        }, 50);
+      }
+    }
+    
+    // Load prices on page load
+    loadPrices();
+  </script>
 
 </body>
 </html>
