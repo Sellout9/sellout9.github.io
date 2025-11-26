@@ -5,78 +5,160 @@
   <title>Grass Exchange – sellout9</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      background: #080c18;
-      color: #e8ecff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Inter", sans-serif;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      font-weight: 500;
     }
     header {
-      padding: 24px 18px;
+      padding: 20px 24px;
       text-align: center;
-      background: rgba(10, 15, 30, 0.7);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      background: #0a0a0a;
+      border-bottom: 1px solid #1a1a1a;
     }
     h1 {
       margin: 0;
-      font-size: 24px;
-      letter-spacing: 0.06em;
+      font-size: 22px;
+      letter-spacing: 0.05em;
       font-weight: 600;
+      color: #ffffff;
     }
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px 16px;
+      padding: 40px 20px;
     }
     .price-card {
-      background: #111729;
-      border: 1px solid #1c2440;
-      border-radius: 16px;
-      padding: 28px;
+      background: #0f0f0f;
+      border: 1px solid #1f1f1f;
+      border-radius: 0;
+      padding: 32px;
       width: 100%;
-      max-width: 420px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+      max-width: 480px;
+      box-shadow: 0 0 0 1px #1a1a1a;
       text-align: center;
     }
     .grass-block {
       display: block;
-      margin: 0 auto 18px;
-      width: 120px;
+      margin: 0 auto 24px;
+      width: 100px;
       height: auto;
       image-rendering: pixelated;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.3));
+    }
+    .main-price {
+      margin: 24px 0 32px;
+      padding: 20px 0;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .main-price-label {
+      color: #888888;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .main-price-value {
+      color: #ffffff;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      margin: 8px 0;
+      letter-spacing: -0.02em;
+    }
+    .price-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #00ff88;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .arrow-up {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 8px solid #00ff88;
     }
     .row {
       display: flex;
       justify-content: space-between;
-      margin: 12px 0;
-      font-size: 20px;
-      font-weight: 600;
+      align-items: center;
+      margin: 16px 0;
+      padding: 12px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .row:last-child {
+      border-bottom: none;
     }
     .label {
-      color: #9ba7cf;
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      color: #666666;
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
     }
     .value {
-      color: #aaf7c9;
+      color: #00ff88;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .value .arrow-up {
+      border-bottom-color: #00ff88;
     }
     .mid {
-      color: #7fb2ff;
+      color: #00aaff;
+    }
+    .mid .arrow-up {
+      border-bottom-color: #00aaff;
     }
     footer {
-      padding: 10px 16px 14px;
+      padding: 20px;
       text-align: center;
+      border-top: 1px solid #1a1a1a;
+      background: #0a0a0a;
+    }
+    .footer-text {
       font-size: 10px;
-      color: #6e7498;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      color: #444444;
+      margin-bottom: 12px;
+    }
+    .ad-section {
+      padding: 12px 16px;
+      background: #0f0f0f;
+      border: 1px solid #00ff88;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .ad-section-text {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+    }
+    .ad-section-command {
+      color: #00ff88;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: monospace;
     }
   </style>
 </head>
@@ -93,23 +175,44 @@
         src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c7/Grass_Block.png"
         alt="Grass block"
       />
+      <div class="main-price">
+        <div class="main-price-label">Current Buy Price</div>
+        <div class="main-price-value">975</div>
+        <div class="price-change">
+          <span class="arrow-up"></span>
+          <span>+5 from yesterday (970)</span>
+        </div>
+      </div>
       <div class="row">
         <div class="label">Sell Price</div>
-        <div class="value">835</div>
+        <div class="value">
+          <span class="arrow-up"></span>
+          <span>835</span>
+        </div>
       </div>
       <div class="row">
         <div class="label">Mid Price</div>
-        <div class="value mid">905</div>
+        <div class="value mid">
+          <span class="arrow-up"></span>
+          <span>905</span>
+        </div>
       </div>
       <div class="row">
         <div class="label">Buy Price</div>
-        <div class="value">975</div>
+        <div class="value">
+          <span class="arrow-up"></span>
+          <span>975</span>
+        </div>
       </div>
     </div>
   </main>
 
   <footer>
-    Unofficial fan project. Not affiliated with skyblock.net staff.
+    <div class="ad-section">
+      <div class="ad-section-text">Sell your grass at the best prices!</div>
+      <div class="ad-section-command">/visit Sellout9</div>
+    </div>
+    <div class="footer-text">Unofficial fan project. Not affiliated with skyblock.net staff.</div>
   </footer>
 
 </body>
