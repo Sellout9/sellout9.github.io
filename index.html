@@ -392,10 +392,10 @@
       />
       <div class="main-price">
         <div class="main-price-label">Current Sell Price</div>
-        <div class="main-price-value" id="currentPrice">835</div>
+        <div class="main-price-value" id="currentPrice">834</div>
         <div class="price-change">
           <span class="arrow-up"></span>
-          <span id="priceChange">+5 from last price (830)</span>
+          <span id="priceChange">-1 from last price (835)</span>
         </div>
       </div>
       <div class="ad-section-prominent">
@@ -406,7 +406,7 @@
         <div class="chart-title">Price History</div>
         <div class="chart-wrapper">
           <div class="chart-tooltip" id="chartTooltip">
-            <div class="chart-tooltip-price" id="tooltipPrice">835</div>
+            <div class="chart-tooltip-price" id="tooltipPrice">834</div>
             <div class="chart-tooltip-label" id="tooltipLabel">Current Price</div>
           </div>
           <svg class="chart-svg" id="priceChart" viewBox="0 0 400 200" preserveAspectRatio="none">
@@ -432,11 +432,11 @@
           <div class="stat-label">Low</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="statHigh">835</div>
+          <div class="stat-value" id="statHigh">834</div>
           <div class="stat-label">High</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="statChange">+235</div>
+          <div class="stat-value" id="statChange">+234</div>
           <div class="stat-label">Total Gain</div>
         </div>
       </div>
@@ -458,7 +458,7 @@
         priceData = await response.json();
         
         // Use priceHistory from JSON, fallback to default if not present
-        priceHistory = priceData.priceHistory || [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835];
+        priceHistory = priceData.priceHistory || [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835, 834];
         
         // Update current price
         document.getElementById('currentPrice').textContent = priceData.sell;
@@ -481,7 +481,7 @@
       } catch (error) {
         console.error('Error loading prices:', error);
         // Fallback to default values
-        priceHistory = [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835];
+        priceHistory = [600, 650, 700, 715, 725, 750, 775, 800, 802, 803, 804, 805, 810, 815, 825, 830, 835, 834];
         drawChart();
       }
     }
