@@ -1,23 +1,148 @@
-<!doctype html><html><head><meta charset="utf-8"><title>???</title><style>
-html,body{margin:0;width:100%;height:100%;background:#000;font-family:Tahoma,Arial,sans-serif;color:#fff;overflow:hidden}
-#q{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:310px;background:#f6f6f6;color:#111;border:1px solid #777;box-shadow:0 0 0 1px #fff inset,0 18px 50px #000}
-#z{height:28px;background:linear-gradient(#fff,#d8e8ff 45%,#9fc3ec 46%,#cfe7ff);border-bottom:1px solid #789;padding:6px 9px;box-sizing:border-box;font-weight:bold;font-size:13px;color:#123}
-#a{padding:22px 24px 18px}
-input{width:100%;box-sizing:border-box;margin:7px 0 13px;padding:6px;border:1px solid #888;background:white;font-family:Tahoma}
-button{float:right;padding:5px 18px;border:1px solid #555;background:linear-gradient(#fff,#ddd);font-family:Tahoma}
-#x{clear:both;color:#900;font-size:12px;padding-top:12px;display:none}
-#ok{display:none;position:absolute;inset:0;place-items:center;font-size:28px}
-</style></head><body><div id="ok">logged in or whatever</div><div id="q"><div id="z">Windows Vista Login</div><div id="a"><label>Username</label><input id="u"><label>Password</label><input id="p" type="password"><button onclick="__()">OK</button><div id="x">bad</div></div></div><script>
-var _0=17,_1="a",_2=0,_3=["x","q","ok","u","p"],_4=function(k){return document.getElementById(k)},_5=Math.random()*0,_6="banana",_7=[1,1,2,3,5,8],_8={why:"no"},_9=null;
-function ___(a,b,c,d,e,f,g,h,i,j,k,l){return (((a+b+c+d+e+f+g+h+i+j+k+l)||0)-0)}
-for(var i=0;i<9;i++){_2+=i-i+0}
-function __(){
-var a=_4(_3[3]).value,b=_4(_3[4]).value,c="ad"+"min",d="s"+"ys",e=___(1,2,3,4,5,6,7,8,9,10,11,12);
-if((a===c)&&((b+"")===d)&&e===78){
-_4(_3[1]).style.display="none";_4(_3[2]).style.display="grid";
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>slot</title><style>
+html,body{margin:0;height:100%;background:#000;font-family:Tahoma}
+#l{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:320px;background:#f6f6f6;border:1px solid #666;box-shadow:0 0 0 1px #fff inset}
+#b{padding:20px}
+input{width:100%;box-sizing:border-box;margin:4px 0 12px;padding:6px}
+button{padding:4px 15px}
+#e{display:none;color:red;font-size:12px}
+#g{display:none;color:#fff;padding:20px}
+pre{font-size:18px;color:#0f0}
+img{max-width:250px;border:2px solid #333}
+#z{font-size:22px;margin-bottom:15px}
+</style></head><body>
+
+<div id="l">
+<div id="b">
+<div>Username</div>
+<input id="u">
+<div>Password</div>
+<input id="p" type="password">
+<button onclick="qqq()">Login</button>
+<div id="e">access denied</div>
+</div>
+</div>
+
+<div id="g">
+
+<div id="z">Credits: <span id="c">100</span></div>
+
+<pre id="m">
++-------------------+
+| ? | ? | ? |
++-------------------+
+</pre>
+
+<button onclick="s()">SPIN</button>
+
+<div style="margin-top:20px">
+<img id="i" src="images/seven.jpeg">
+</div>
+
+<div id="t" style="margin-top:10px;font-size:20px"></div>
+
+</div>
+
+<script>
+
+var _____=0;
+var __x=100;
+var junk1="potato";
+var junk2=777777777;
+var junk3=[1,2,3,4,5,6,7];
+var junk4={x:"x"};
+var junk5=Math.random()*0;
+
+function id(x){return document.getElementById(x)}
+
+function qqq(){
+
+var a=id("u").value;
+var b=id("p").value;
+
+if(
+(a=="ad"+"min")
+&&
+(b=="sy"+"s")
+){
+
+id("l").style.display="none";
+id("g").style.display="block";
+
 }else{
-_4(_3[0]).style.display="block";
-_4(_3[4]).value="";
-}}
-(function(){var r="";for(var j=0;j<40;j++){r+=String.fromCharCode(65+(j%26));}window.zzz=r})();
-</script></body></html>
+
+id("e").style.display="block";
+
+}
+
+}
+
+function w(){
+
+id("c").innerHTML=__x;
+
+}
+
+function s(){
+
+if(__x<=0){
+
+id("t").innerHTML="OUT OF CREDITS";
+return;
+
+}
+
+__x--;
+
+var r1=Math.floor(Math.random()*7)+1;
+var r2=Math.floor(Math.random()*7)+1;
+var r3=Math.floor(Math.random()*7)+1;
+
+id("m").textContent=
+"+-------------------+\n"+
+"| "+r1+" | "+r2+" | "+r3+" |\n"+
+"+-------------------+";
+
+if(
+r1==7
+&&
+r2==7
+&&
+r3==7
+){
+
+__x+=50;
+
+id("i").src="images/seven.jpeg";
+
+id("t").innerHTML="JACKPOT +50";
+
+}else{
+
+id("i").src="images/ghoul.jpeg";
+
+var a=[
+"THE GHOUL TAKES YOUR MONEY",
+"BAD SPIN",
+"THE CREATURE FEEDS",
+"UNFORTUNATE",
+"THE GHOUL APPROVES",
+"ANOTHER OFFERING"
+];
+
+id("t").innerHTML=a[Math.floor(Math.random()*a.length)];
+
+}
+
+for(var x=0;x<15;x++){
+
+_____+=x-x+0;
+
+}
+
+w();
+
+}
+
+</script>
+
+</body></html>
